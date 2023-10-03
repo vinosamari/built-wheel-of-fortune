@@ -47,7 +47,7 @@ export default {
 				{
 					id: 1, //* The unique id of each prize, an integer greater than 0
 					name: 'Free 1 month \nSubscription', // Prize name, display value when type is canvas (this parameter is not needed when type is image)
-					value: 'Free 1 month Subscription', //* Prize value, return value after spinning
+					value: 'Free Subscription For 1 month', //* Prize value, return value after spinning
 					bgColor: '#42d70d', // Background color (no need for this parameter when type is image)
 					color: '#000000', // Font color (this parameter is not required when type is image)
 					probability: 20, //* Probability, up to 4 decimal places (the sum of the probabilities of all prizes
@@ -56,7 +56,7 @@ export default {
 				{
 					id: 2,
 					name: 'GHS100 \n in Wallet',
-					value: 'GHS1000',
+					value: 'GHS100 In Your Built Wallet',
 					bgColor: '#3f057e',
 					color: '#ffffff',
 					probability: 5,
@@ -65,7 +65,7 @@ export default {
 				{
 					id: 3,
 					name: 'Built \nT-Shirt',
-					value: 'Shirt',
+					value: 'A Branded Built T-Shirt',
 					bgColor: '#fef151',
 					color: '#000000',
 					probability: 10,
@@ -74,7 +74,7 @@ export default {
 				{
 					id: 4,
 					name: 'Branded \n Umbrella',
-					value: 'Umbrella',
+					value: 'A Branded Built Umbrella',
 					bgColor: '#032f83',
 					color: 'white',
 					probability: 10,
