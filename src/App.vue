@@ -19,6 +19,7 @@
 import FortuneWheel from 'vue-fortune-wheel'
 import 'vue-fortune-wheel/style.css'
 import MyDialog from "@/components/MyDialog.vue";
+import axios from "axios";
 
 export default {
 	name: 'App',
@@ -29,7 +30,10 @@ export default {
 	},
 	mounted() {
 		let param = window.location.search.split('=')[1]
-		let url = 'http://built.test/api/fortune-spins'
+		let url = 'https://web.builtaccounting.com/api/fortune-spins'
+		// axios.get(url).then((response) => {
+		// 	console.log(response)
+		// })
 	},
 	data() {
 		return {
@@ -150,6 +154,9 @@ export default {
 	color: #2c3e50;
 	min-height: 100vh;
 	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .fade-enter-active, .fade-leave-active {
