@@ -1,7 +1,8 @@
 <template>
 	<div id="app">
+		<h1 v-if="done"><span>Thank you for playing!</span> <br/> Come back another time! 😁</h1>
 		<FortuneWheel
-			v-if="!done"
+			v-else
 			style="width: 500px;"
 			:canvas="canvasOptions"
 			:prizes="prizes"
@@ -10,7 +11,7 @@
 			@rotateEnd="onRotateEnd"
 		/>
 		<Transition name="fade" :appear="true" v-if="prize">
-			<my-dialog v-if="done" :prize="prize"/>
+			<my-dialog :prize="prize"/>
 		</Transition>
 	</div>
 </template>
@@ -28,12 +29,18 @@ export default {
 		FortuneWheel
 
 	},
-	mounted() {
+	async mounted() {
 		let param = window.location.search.split('=')[1]
 		let url = 'https://web.builtaccounting.com/api/fortune-spins'
-		// axios.get(url).then((response) => {
-		// 	console.log(response)
-		// })
+		let resp = await axios.get(url, {
+			headers: {
+				Authorization: 'Bearer ' + param
+			}
+		})
+		if (resp.data.reward) {
+			this.done = true
+			// this.prize = resp.data
+		}
 	},
 	data() {
 		return {
@@ -130,6 +137,19 @@ export default {
 		onRotateEnd(prize) {
 			this.prize = prize
 			this.done = true
+			let rewardObject = {
+				"reward": prize.name,
+				"description": prize.value
+			}
+			let param = window.location.search.split('=')[1]
+			let url = 'https://web.builtaccounting.com/api/fortune-spins'
+			axios.post(url, rewardObject, {
+				headers: {
+					Authorization: 'Bearer ' + param
+				}
+			}).then((response) => {
+				console.log(response)
+			})
 		},
 		// Simulate the request back-end interface, verified: whether to pass the verification, duration: delay time
 		DoServiceVerify(verified, duration) {
@@ -163,8 +183,7 @@ export default {
 	transition: opacity 0.8s;
 }
 
-.fade-enter-from, .fade-leave-to
-{
+.fade-enter-from, .fade-leave-to {
 	opacity: 0;
 }
 </style>
