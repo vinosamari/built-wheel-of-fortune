@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<FortuneWheel
+			v-if="!done"
 			style="width: 500px;"
 			:canvas="canvasOptions"
 			:prizes="prizes"
