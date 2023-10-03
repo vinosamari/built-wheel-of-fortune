@@ -13,7 +13,7 @@ export default {
 		<confetti :value="prize.value"/>
 		<section>
 			<div v-if="prize.id !== 6">
-				<h1>Congratulations!🎉🎉</h1>
+				<h1 class="animate-charcter">Congratulations!🎉🎉</h1>
 				<h2>You've won {{ prize.value }}!</h2>
 			</div>
 			<div v-else>
@@ -86,5 +86,51 @@ div {
 h1 {
 	font-weight: bolder;
 	font-size: 2rem;
+}
+.waviy {
+	position: relative;
+}
+.waviy span {
+	position: relative;
+	display: inline-block;
+	font-size: 40px;
+	color: #fff;
+	text-transform: uppercase;
+	animation: flip 2s infinite;
+	animation-delay: calc(.2s * var(--i))
+}
+@keyframes flip {
+	0%,80% {
+		transform: rotateY(360deg)
+	}
+}
+
+.animate-charcter
+{
+	text-transform: uppercase;
+	background-image: linear-gradient(
+		-225deg,
+		#231557 0%,
+		#44107a 29%,
+		#ff1361 67%,
+		#fff800 100%
+	);
+	background-size: auto auto;
+	background-clip: border-box;
+	background-size: 200% auto;
+	color: #fff;
+	background-clip: text;
+	text-fill-color: transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: textclip 2s linear infinite;
+	display: inline-block;
+	font-size: 3rem;
+}
+
+@keyframes textclip {
+	to {
+		background-position: 200% center;
+	}
 }
 </style>
