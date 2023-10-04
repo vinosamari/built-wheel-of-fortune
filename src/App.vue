@@ -3,7 +3,7 @@
 		<h1 v-if="done"><span>Thank you for playing!</span> <br/> Come back another time! 😁</h1>
 		<FortuneWheel
 			v-else
-			style="width: 500px;"
+			style="width: 100%;"
 			:canvas="canvasOptions"
 			:prizes="prizes"
 			:verify="cavansVerify"
@@ -49,7 +49,7 @@ export default {
 			prize: null,
 			cavansVerify: true, // Whether the turntable in canvas mode is enabled for verification
 			canvasOptions: {
-				borderWidth: 0.5,
+				borderWidth: 0.2,
 				borderColor: '#ffe700'
 			},
 			prizes: [
