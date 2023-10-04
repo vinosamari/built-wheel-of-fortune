@@ -22,6 +22,7 @@ import 'vue-fortune-wheel/style.css'
 import MyDialog from "@/components/MyDialog.vue";
 import axios from "axios";
 
+
 export default {
 	name: 'App',
 	components: {
@@ -41,6 +42,7 @@ export default {
 		// 	this.done = true
 		// 	// this.prize = resp.data
 		// }
+		this.token = new URLSearchParams(window.location.search).getAll('token')[0]
 	},
 	data() {
 		return {
@@ -108,7 +110,8 @@ export default {
 
 
 			],
-			done: false
+			done: false,
+			token: null
 		}
 	},
 	methods: {
@@ -141,11 +144,12 @@ export default {
 				"reward": prize.name,
 				"description": prize.value
 			}
+
 			let param = window.location.search.split('=')[1]
 			let url = 'https://web.builtaccounting.com/api/fortune-spins'
 			axios.post(url, rewardObject, {
 				headers: {
-					Authorization: 'Bearer ' + param
+					Authorization: 'Bearer ' + this.token
 				}
 			}).then((response) => {
 				console.log(response)
