@@ -31,17 +31,6 @@ export default {
 
 	},
 	async mounted() {
-		let param = window.location.search.split('=')[1]
-		// let url = 'https://web.builtaccounting.com/api/fortune-spins'
-		// let resp = await axios.get(url, {
-		// 	headers: {
-		// 		Authorization: 'Bearer ' + param
-		// 	}
-		// })
-		// if (resp.data.reward) {
-		// 	this.done = true
-		// 	// this.prize = resp.data
-		// }
 		this.token = new URLSearchParams(window.location.search).getAll('token')[0]
 	},
 	data() {
